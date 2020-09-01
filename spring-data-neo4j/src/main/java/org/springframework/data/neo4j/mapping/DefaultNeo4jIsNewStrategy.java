@@ -46,7 +46,7 @@ import org.springframework.util.Assert;
  * </ul>
  *
  * @author Michael J. Simons
- * @since 5.1.x
+ * @since 5.1.20
  */
 class DefaultNeo4jIsNewStrategy implements IsNewStrategy {
 
