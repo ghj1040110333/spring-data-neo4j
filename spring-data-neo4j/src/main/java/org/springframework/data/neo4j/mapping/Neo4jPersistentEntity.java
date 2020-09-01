@@ -17,7 +17,6 @@ package org.springframework.data.neo4j.mapping;
 
 import org.neo4j.ogm.metadata.MetaData;
 import org.springframework.data.mapping.MappingException;
-import org.springframework.data.mapping.PersistentProperty;
 import org.springframework.data.mapping.model.BasicPersistentEntity;
 import org.springframework.data.neo4j.mapping.Neo4jPersistentProperty.PropertyType;
 import org.springframework.data.support.IsNewStrategy;

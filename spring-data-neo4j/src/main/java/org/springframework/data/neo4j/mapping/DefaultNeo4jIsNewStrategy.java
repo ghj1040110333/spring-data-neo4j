@@ -17,11 +17,11 @@ package org.springframework.data.neo4j.mapping;
 
 import java.util.function.Function;
 
-import org.apache.commons.logging.LogFactory;
 import org.neo4j.ogm.id.InternalIdStrategy;
 import org.neo4j.ogm.metadata.ClassInfo;
 import org.neo4j.ogm.metadata.MetaData;
-import org.springframework.core.log.LogAccessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.support.IsNewStrategy;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
@@ -46,11 +46,11 @@ import org.springframework.util.Assert;
  * </ul>
  *
  * @author Michael J. Simons
- * @since 5.2.x
+ * @since 5.1.x
  */
 class DefaultNeo4jIsNewStrategy implements IsNewStrategy {
 
-	private static final LogAccessor log = new LogAccessor(LogFactory.getLog(DefaultNeo4jIsNewStrategy.class));
+	private static final Logger log = LoggerFactory.getLogger(DefaultNeo4jIsNewStrategy.class);
 
 	static IsNewStrategy basedOn(Neo4jPersistentEntity<?> entity, MetaData ogmMetadata) {
 
@@ -81,7 +81,7 @@ class DefaultNeo4jIsNewStrategy implements IsNewStrategy {
 		Neo4jPersistentProperty versionProperty = entity.getVersionProperty();
 		if (assignedId) {
 			if (versionProperty == null) {
-				log.warn(() -> "Instances of " + entity.getType()
+				log.warn("Instances of " + entity.getType()
 						+ " with an assigned id will always be treated as new without version property!");
 				valueType = Void.class;
 				valueLookup = source -> null;
